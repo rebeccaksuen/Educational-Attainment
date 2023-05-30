@@ -11,8 +11,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 function addMarker(data){
     // console.log(data)
     // these are the names of our lat/long fields in the google sheets:
-    L.marker([data.lat,data.lng]).addTo(map).bindPopup(`<h2>${data['Where did you get vaccinated?']}</h2> <h3>${data['Have you been vaccinated?']}</h3>`)
-    createButtons(data.lat,data.lng,data['Where did you get vaccinated?'])
+    L.marker([data.lat,data.lng]).addTo(map).bindPopup(`<h2>${data['Where is your hometown?']}</h2> <h3>${data['Do you feel that you received support from your family in higher education?']}</h3>`)
+    createButtons(data.lat,data.lng,data['Where is your hometown?'])
     return
 }
 
@@ -48,3 +48,26 @@ function processData(results){
 }
 
 loadData(dataUrl)
+
+document.getElementById("defaultOpen").click();
+
+function openCity(evt, cityName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+  
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+  
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+  
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
