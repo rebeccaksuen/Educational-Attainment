@@ -34,7 +34,7 @@ header{
 .tab {
     overflow: hidden;
     border: none;
-    background-color: #f1dca7;
+    background-color: #ffd470;
     justify-content: center;
     display: flex;
 }
@@ -60,12 +60,12 @@ header{
   
 /* Change background color of buttons on hover */
 .tab button:hover {
-    background-color: #ffcb69;
+    background-color: #ffbf49;
 }
   
 /* Create an active/current tablink class */
 .tab button.active {
-    background-color: #ffcb69;
+    background-color: #ffbf49;
 }
   
 
@@ -73,7 +73,7 @@ header{
 .tabcontent {
     display: none;
     /* background-color: #edede9; */
-    background-color: #d9ae94;
+    background-color: #d0ceff;
     padding: 6px 12px;
     border: none;
     border-top: none;
