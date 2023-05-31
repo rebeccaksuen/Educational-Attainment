@@ -1,12 +1,12 @@
 // declare variables
-let mapOptions = {'center': [34.0709,-118.444],'zoom':5}
+let mapOptions = {'center': [34.0709,-118.444],'zoom':6}
 
 // use the variables
 const map = L.map('the_map').setView(mapOptions.center, mapOptions.zoom);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+// L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+   // attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+//}).addTo(map);
 
 function addMarker(data){
     // console.log(data)
@@ -26,7 +26,8 @@ function createButtons(lat,lng,title,marker){
     newButton.addEventListener('click', function() { marker.openPopup(); })
     const spaceForButtons = document.getElementById("buttons");
     spaceForButtons.appendChild(newButton);
-    }
+
+    //if then here?
 
     newButton.style.fontSize = "12px";
     newButton.style.fontFamily = "";
@@ -37,6 +38,7 @@ function createButtons(lat,lng,title,marker){
     newButton.style.justifyContent = "center";
     newButton.style.width = "30%";
     newButton.style.cursor = "pointer";
+}
 
 const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQSn415MNwpNpFmQyxj2WbVnRJSDx85ki66G7zrcfeHpl8DSiErm9xD8psQxTwbPAzDLQeRMI8kF6eR/pub?output=csv"
 
@@ -47,12 +49,12 @@ function loadData(url){
         complete: results => processData(results)
     })
 }
-
 function processData(results){
     console.log(results)
     results.data.forEach(data => {
         console.log(data)
         addMarker(data)
+        //change marker to add more info??
     })
 }
 
