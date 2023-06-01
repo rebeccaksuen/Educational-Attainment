@@ -24,9 +24,7 @@
 
         <div class="main">
             <div id="contents">
-                <div id="placeForButtons"></div>
-                <!-- Be sure to use your own survey here!!!!!!! -->
-                <!-- tab -->
+
                 <div class="tab">
                     <button class="tablinks" onclick="openCity(event, 'GoogleForm')" id="defaultOpen">Take the Survey</button>
                     <button class="tablinks" onclick="openCity(event, 'Responses')">View Others' Responses</button>
@@ -35,8 +33,11 @@
                 <div id="GoogleForm" class="tabcontent">
                     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfYmgYlQz0rhLKwQQEgRO8mDsf-XtuQkCpZAi09K31TLdXgYA/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
                 </div>
+                <div id="Responses" class="tabcontent">
+                    <div id="buttons"></div>
 
             </div>
+            
             <div id="the_map"></div>
         </div>
         <div id="footer">
