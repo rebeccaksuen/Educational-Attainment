@@ -4,14 +4,13 @@ let mapOptions = {'center': [34.0709,-118.444],'zoom':6}
 // use the variables
 const map = L.map('the_map').setView(mapOptions.center, mapOptions.zoom);
 
-// L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-   // attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-//}).addTo(map);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
 
 function addMarker(data){
     // console.log(data)
-    // these are the names of our lat/long fields in the google sheets:
-    L.marker([data.lat,data.lng]).addTo(map).bindPopup(`<h2>${data['Where is your hometown?']}</h2> <h3>${data['Do you feel that you received support from your family in higher education?']}</h3>`)
+    L.marker([data.lat,data.lng]).addTo(map).bindPopup(`<h2>${data['Where is your hometown?']}</h2> <h3>${data['Describe how family support has affected your success in college.']}</h3> <h3>${data['Describe how family support affected your ability to apply for college.']}</h3>`)
     createButtons(data.lat,data.lng,data['Where is your hometown?'])
     return
 }
