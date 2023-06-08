@@ -3,14 +3,22 @@ body{
     margin: 0;
     grid-template-rows: 100px auto auto;
     grid-template-areas: "header" "main_content" "footer";
-    background-color: rgb(163, 155, 249);
+    background-color: rgb(248,186,186);
     gap: 10px;
+    font-family: Manrope, sans-serif;
+    font-style: normal;
+        font-weight: 350;
+    font-size: 15px;
 }
 
 header{
     grid-area: header;
     justify-self: center;
     align-self: center;
+    font-family: Manrope, sans-serif;
+    font-style: normal;
+        font-weight: 350;
+    font-size: 20px;
 }
 
 #footer{
@@ -32,45 +40,9 @@ header{
     grid-area: main_map;
     height:80vh;
     margin: 30px
+
 }
 
-/* Style the tab */
-.tab {
-    overflow: hidden;
-    border: none;
-    background-color: #ffd470;
-    justify-content: center;
-    display: flex;
-}
-
-/* Style the buttons that are used to open the tab content */
-.tab button {
-    background-color: inherit;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: medium;
-    color: #6c584c;
-    width: 50%;
-    /* float: left; */
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding-top: 15px;
-    padding-bottom: 10px;
-    transition: 0.3s;
-    text-align: center;
-}
-
-  
-/* Change background color of buttons on hover */
-.tab button:hover {
-    background-color: #ffbf49;
-}
-  
-/* Create an active/current tablink class */
-.tab button.active {
-    background-color: #ffd152;
-}
-  
 
 /*tab style*/
 .tabcontent {
