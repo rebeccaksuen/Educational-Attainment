@@ -27,7 +27,7 @@ header{
 
 .main{
     grid-area: main_content;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 2fr;
     grid-template-areas: "main_map content";
     display: grid;
 }
@@ -38,7 +38,7 @@ header{
 
 #the_map{
     grid-area: main_map;
-    height:80vh;
+    height:100vh;
     margin: 30px
 
 }
