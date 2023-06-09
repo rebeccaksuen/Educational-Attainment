@@ -1,6 +1,5 @@
 
 let mapOptions = {'center': [34.0709,-118.444],'zoom':6}
-
 const map = L.map('the_map').setView(mapOptions.center, mapOptions.zoom);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
 
     <link rel="stylesheet" href="../css/leaflet-sidebar.css" />
-</head>
         <meta charset="utf-8" />
         <link rel="shortcut icon" href="#">
         <link rel="stylesheet" href="styles/style.css">
@@ -32,13 +31,13 @@
         </header>
         <h2>UCLA First-Generation College Pilipinx Stories</h2>
         <div id="the_map"></div>
-    </div>
-       
+    </div>    
 <!-- plug in stuff -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta charset="utf-8">
         <link rel="stylesheet" href="../css/ol2-sidebar.css" />
     </head>
+<!--side bar stuff-->
         <div id="sidebar" class="sidebar collapsed">
             <!-- Nav tabs -->
             <div class="sidebar-tabs">
@@ -48,36 +47,30 @@
                     <li class="disabled"><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
 
                 </ul>
-    
-                <ul role="tablist">
-                    <li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
-                </ul>
             </div>
     
             <!-- Tab panes -->
             <div class="sidebar-content">
                 <div class="sidebar-pane" id="home">
                     <h1 class="sidebar-header">
-                        sidebar-v2
+                        The Project
                         <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
                     </h1>
     
                     <p class="info">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
                 </div>
     
-                <div class="sidebar-pane" id="profile">
-                    <h1 class="sidebar-header">Profile<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <div class="sidebar-pane" id="Stories">
+                    <h1 class="sidebar-header">Stories<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
                 </div>
     
                 <div class="sidebar-pane" id="messages">
-                    <h1 class="sidebar-header">Messages<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                    <h1 class="sidebar-header">Contact Us<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
                 </div>
-    
-                <div class="sidebar-pane" id="settings">
-                    <h1 class="sidebar-header">Settings<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
                 </div>
             </div>
         </div>
+    </div>
 
         <div id="the_map" class="sidebar-map"></div>
     
@@ -86,17 +79,6 @@
         <script src="../js/jquery-sidebar.js"></script>
     
         <script>
-            var map = new OpenLayers.Map('the_map');
-    
-    var wms = new OpenLayers.Layer.WMS(
-        "OpenLayers WMS",
-        "http://vmap0.tiles.osgeo.org/wms/vmap0", {
-            layers: 'basic'
-        });
-
-    map.addLayer(wms);
-    map.setCenter([7, 51.2], 6);
-
     var sidebar = $('#sidebar').sidebar();
 </script>
         </div>
