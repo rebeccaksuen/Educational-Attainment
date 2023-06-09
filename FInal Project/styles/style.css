@@ -27,7 +27,7 @@ header{
 
 .main{
     grid-area: main_content;
-    grid-template-columns: 2fr 2fr;
+    grid-template-columns: 3fr 3fr;
     grid-template-areas: "main_map content";
     display: grid;
 }
@@ -38,29 +38,6 @@ header{
 
 #the_map{
     grid-area: main_map;
-    height:100vh;
+    height:150vh;
     margin: 30px
-
-}
-
-
-/*tab style*/
-.tabcontent {
-    display: none;
-    /* background-color: #edede9; */
-    background-color: #d0ceff;
-    padding: 6px 12px;
-    border: none;
-    border-top: none;
-}
-
-#theSurvey{
-    grid-area: survey;
-    text-align: center;
-}
-
-#placeForButtons{
-    grid-area: buttonHome;
-    display:grid;
-    grid-template-columns: repeat(1, 1fr);
 }
