@@ -3,7 +3,8 @@ body{
     margin: 0;
     grid-template-rows: 100px auto auto;
     grid-template-areas: "header" "main_content" "footer";
-    background-color: rgb(248,186,186);
+    background-color: #0038A7;
+    color:aliceblue;
     gap: 10px;
     font-family: Manrope, sans-serif;
     font-style: normal;
@@ -19,6 +20,7 @@ header{
     font-style: normal;
         font-weight: 350;
     font-size: 20px;
+    margin-left: 5cap;
 }
 
 #footer{
@@ -28,7 +30,7 @@ header{
 #the_map{
     grid-area: main_map;
     height:150vh;
-    margin: 30px
+    width: 300vh;
 }
 
 #sidebar{
