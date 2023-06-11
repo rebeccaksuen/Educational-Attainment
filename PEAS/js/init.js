@@ -50,3 +50,52 @@ function addMarker(lat,lng,title,message){
     }
     
     loadData(dataUrl)
+
+    // trying out the chart
+    function populateCharts(chartType,chartnumber){
+        //resize map to fit screen
+       console.log('populateCharts: '+chartType)
+       console.log('populateCharts: '+chartnumber)
+       switch (chartType){
+           case 'Off-Campus Workers':
+               currentData = currentData.filter(data=>data.inucla=='no')
+               addChart(yearChart,currentData)
+               map.fitBounds(offCampus.getBounds());
+               map.removeLayer(onCampus)
+               map.addLayer(offCampus)
+               break;
+           case 'On-Campus Workers':
+               currentData = currentData.filter(data=>data.inucla=='yes')
+               addChart(yearChart,currentData)
+               map.fitBounds(onCampus.getBounds());
+               map.removeLayer(offCampus)
+               map.addLayer(onCampus)
+               break;
+           case 'Undergraduate':
+               currentData = currentData.filter(data=>data.year=='Traditional Undergraduate')
+               addChart(whyjobChart,currentData)
+               addChart(complaintChart,currentData,2)
+               break;
+           case 'Graduate':
+               currentData = currentData.filter(data=>data.year=='Graduate')
+               addChart(whyjobChart,currentData)
+               addChart(complaintChart,currentData,2)
+               break;
+           case 'Nontraditional Undergraduate':
+               currentData = currentData.filter(data=>data.year=='Nontraditional Undergraduate')
+               addChart(whyjobChart,currentData)
+               addChart(complaintChart,currentData,2)
+               break;
+           case 'Post-Graduate':
+               currentData = currentData.filter(data=>data.year=='Post-Grad')
+               addChart(whyjobChart,currentData)
+              addChart(complaintChart,currentData,2)
+               break;
+           // todo: add the rest of the cases here!
+           // case 'Graduate':
+               // 
+           
+           case 'defaultchart':
+               addChart(defaultChart,currentData)
+       }
+   }
