@@ -51,7 +51,15 @@ function addMarker(lat,lng,title,message){
     
     loadData(dataUrl)
 
-    // trying out the chart
+    // chart stuff testing
+    let defaultChart = {
+        "labels": ["Yes", "No", "Unsure"],
+        "datasets": [], //stuck on how to define variables here
+        "colors":["#FFBCCE","#8FF0DE"],
+        "chartname": "defaultchart",
+        "title":"Recieved Family Support?"
+    }
+    
     function populateCharts(chartType,chartnumber){
         //resize map to fit screen
        console.log('populateCharts: '+chartType)
