@@ -13,30 +13,6 @@ function addMarker(data){
     return
 }
 
-function createButtons(lat,lng,title,marker){
-    const newButton = document.createElement("button"); 
-    newButton.id = "button"+title; 
-    newButton.innerHTML = title; 
-    newButton.setAttribute("lat",lat); 
-    newButton.setAttribute("lng",lng); 
-    newButton.addEventListener('click', function() { map.flyTo([lat,lng],7); })
-    newButton.addEventListener('click', function() { marker.openPopup(); })
-    const spaceForButtons = document.getElementById("buttons");
-    spaceForButtons.appendChild(newButton);
-
-    //if then here?
-
-    newButton.style.fontSize = "12px";
-    newButton.style.fontFamily = "";
-    newButton.style.textAlign = "center";
-    newButton.style.margin = "2px"
-    newButton.style.paddingTop = "8px";
-    newButton.style.paddingBottom = "8px";
-    newButton.style.justifyContent = "center";
-    newButton.style.width = "30%";
-    newButton.style.cursor = "pointer";
-}
-
 const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQSn415MNwpNpFmQyxj2WbVnRJSDx85ki66G7zrcfeHpl8DSiErm9xD8psQxTwbPAzDLQeRMI8kF6eR/pub?output=csv"
 
 function loadData(url){
