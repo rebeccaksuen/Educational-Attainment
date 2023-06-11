@@ -8,13 +8,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-// create a function to add markers
-function addMarker(lat,lng,title,message){
-    console.log(message)
-    L.marker([lat,lng]).addTo(map).bindPopup(`<h2>${title}</h2> <h3>${message}</h3>`)
-    return message
-}
-
 fetch("map.geojson")
     .then(response => {
         return response.json()
@@ -29,3 +22,24 @@ fetch("map.geojson")
                 return layer.feature.properties.place;
             }).addTo(map);
     })
+
+    // map points
+    const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQSn415MNwpNpFmQyxj2WbVnRJSDx85ki66G7zrcfeHpl8DSiErm9xD8psQxTwbPAzDLQeRMI8kF6eR/pub?output=csv"
+
+    function loadData(url){
+        Papa.parse(url, {
+            header: true,
+            download: true,
+            complete: results => processData(results)
+        })
+    }
+    
+    function processData(results){
+        console.log(results)
+        results.data.forEach(data => {
+            console.log(data)
+            addMarker(data.lat,data.lng,data['What zip code do you live in?'],data['Have you been vaccinated?'])
+        })
+    }
+    
+    loadData(dataUrl)
