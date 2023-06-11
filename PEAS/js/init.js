@@ -26,6 +26,13 @@ fetch("map.geojson")
     // map points
     const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQSn415MNwpNpFmQyxj2WbVnRJSDx85ki66G7zrcfeHpl8DSiErm9xD8psQxTwbPAzDLQeRMI8kF6eR/pub?output=csv"
 
+    // create a function to add markers
+function addMarker(lat,lng,title,message){
+    console.log(message)
+    L.marker([lat,lng]).addTo(map).bindPopup(`<h2>${title}</h2> <h3>${message}</h3>`)
+    return message
+}
+
     function loadData(url){
         Papa.parse(url, {
             header: true,
@@ -38,7 +45,7 @@ fetch("map.geojson")
         console.log(results)
         results.data.forEach(data => {
             console.log(data)
-            addMarker(data.lat,data.lng,data['What zip code do you live in?'],data['Have you been vaccinated?'])
+            addMarker(data.lat,data.lng,data['Where is your hometown?'],data['Do you feel that you received support from your family in higher education?'])
         })
     }
     
