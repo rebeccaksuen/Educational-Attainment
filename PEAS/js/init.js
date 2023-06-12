@@ -3,41 +3,55 @@ let mapOptions = {'center': [34.0709,-118.444],'zoom':5}
 
 // use the variables
 const map = L.map('the_map').setView(mapOptions.center, mapOptions.zoom);
-// toggle variables for chart from survey
-let supportReceived = 0;
+
+// more variables
+let supportReceived = 0; //chart variables
 let supportNotReceived = 0; 
 let supportUnsure = 0;
 
-let theChart
+let theChart;
 
+let yesSupport = L.featureGroup(); //map toggle variables
+let noSupport = L.featureGroup();
+let unsureSupport = L.featureGroup();
+
+let layers = {
+    "Received Family Support": yesSupport,
+    "Did Not Receive Family Support": noSupport,
+    "Unsure if Received Family Suport": unsureSupport
+}
+
+let circleOptions = {
+    radius: 4,
+    fillColor: "#ff7800",
+    color: "#000",
+    weight: 1,
+    opacity: 1,
+    fillOpacity: 0.8
+}
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-fetch("map.geojson")
-    .then(response => {
-        return response.json()
-    })
-    .then(data =>{
-        // Basic Leaflet method to add GeoJSON data
-        L.geoJSON(data, {
-                pointToLayer: (feature, latlng) => { 
-                    return L.circleMarker(latlng, {color: feature.properties.color})
-                }
-            }).bindPopup(layer => {
-                return layer.feature.properties.place;
-            }).addTo(map);
-    })
-
     // map points
     const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQSn415MNwpNpFmQyxj2WbVnRJSDx85ki66G7zrcfeHpl8DSiErm9xD8psQxTwbPAzDLQeRMI8kF6eR/pub?output=csv"
 
-    // create a function to add markers
-function addMarker(lat,lng,title,message){
-    console.log(message)
-    L.marker([lat,lng]).addTo(map).bindPopup(`<h2>${title}</h2>`)
-    return message
+    // create a function to add markers & layer stuff
+function addMarker(data){
+    if(data['supportReceived']=="Yes"){
+        yesSupport.addLayer(L.circleMarker([data.lat,data.lng]))
+        circleOptions.fillColor="blue"
+    }
+    if (data['supportReceived']=="No"){
+        circleOptions.fillColor="red"
+        noSupport.addLayer(L.circleMarker([data.lat,data.lng]))
+    }
+    if (data['supportReceived']=="I am unsure."){
+        circleOptions.fillColor="yellow"
+        unsureSupport.addLayer(L.circleMarker([data.lat,data.lng]))
+    }
+    return data
 }
 
     function loadData(url){
@@ -66,7 +80,6 @@ function addMarker(lat,lng,title,message){
         }
     };
 
-    //step 4 still in progress
     function processData(results){
         console.log(results)
         results.data.forEach(data => {
@@ -75,11 +88,15 @@ function addMarker(lat,lng,title,message){
             filterSupportResponses(data.supportReceived)
         })
         addChart()
-    };
-
+        // layer stuff
+        yesSupport.addTo(map)
+        noSupport.addTo(map)
+        unsureSupport.addTo(map)
+        let allLayers = L.featureGroup([yesSupport,noSupport,unsureSupport]);
+        map.fitBounds(allLayers.getBounds());
+    }
     loadData(dataUrl)
 
-//add legend here?
 //toggle layers code
 
     // adding chart here (step 5 on prof al's tutorial)
