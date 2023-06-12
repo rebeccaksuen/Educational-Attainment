@@ -3,6 +3,13 @@ let mapOptions = {'center': [34.0709,-118.444],'zoom':5}
 
 // use the variables
 const map = L.map('the_map').setView(mapOptions.center, mapOptions.zoom);
+// toggle variables for chart from survey
+let supportReceived = 0;
+let supportNotReceived = 0; 
+let supportUnsure = 0;
+
+let theChart
+
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -29,7 +36,7 @@ fetch("map.geojson")
     // create a function to add markers
 function addMarker(lat,lng,title,message){
     console.log(message)
-    L.marker([lat,lng]).addTo(map).bindPopup(`<h2>${title}</h2> <h3>${message}</h3>`)
+    L.marker([lat,lng]).addTo(map).bindPopup(`<h2>${title}</h2>`)
     return message
 }
 
@@ -41,56 +48,100 @@ function addMarker(lat,lng,title,message){
         })
     }
     
+   // pie chart stuff UNDER HERE
+    // toggle variables - variables - supportReceived (red), supportNotReceived (blue), supportUnsure (yellow)
+
+    function filterSupportResponses(supportResponse){
+        if (supportResponse=="Yes"){
+           supportReceived +=1
+           return
+        }
+        if (supportResponse=="No"){
+            supportNotReceived +=1
+            return
+        }
+        if (supportResponse=="I am unsure."){
+            supportUnsure +=1
+            return
+        }
+    };
+
+    //step 4 still in progress
     function processData(results){
         console.log(results)
         results.data.forEach(data => {
             console.log(data)
-            addMarker(data.lat,data.lng,data['Where is your hometown?'],data['Do you feel that you received support from your family in higher education?'])
+            addMarker(data.lat,data.lng,data['Where is your hometown?'])
+            filterSupportResponses(data.supportReceived)
         })
-    }
-    
+        addChart()
+    };
+
     loadData(dataUrl)
 
-    // chart stuff testing
-    let defaultChart = {
-        "labels": ["Yes", "No", "Unsure"],
-        "datasets": [],
-        "colors":["#FFBCCE","#8FF0DE"],
-        "chartname": "defaultchart",
-        "title":"Recieved Family Support?"
+//add legend here?
+//toggle layers code
+
+    // adding chart here (step 5 on prof al's tutorial)
+    // function addChart(){
+    //     new chart(document.getElementById("chart"), { 
+    //         type: 'pie',
+    //         data: {
+    //             labels:["Received Family Support", "Did Not Receive Family Support", "Unsure if Received Family Support"],
+    //             datasets: [
+    //                 {
+    //                     label: "count",
+    //                     backgroundColor: ["red", "blue", "yellow"],
+    //                     data: [supportReceived, supportNotReceived, supportUnsure]
+    //                 }
+    //             ]
+
+    //         },
+    //     })
+    // }
+
+    function addChart(){
+        // create the new chart here, target the id in the html called "chart"
+        theChart = new Chart(document.getElementById("chart"), {
+            type: 'pie', //can change to 'bar','line' chart or others
+            data: {
+                // labels for data here
+            labels: ["Received Family Support","Did Not Receive Family Support", "Unsure"],
+            datasets: [
+                {
+                label: "Count",
+                backgroundColor: ["blue", "red", "yellow"],
+                data: [supportReceived,supportNotReceived,supportUnsure]
+                }
+            ]
+            },
+            options: {
+                responsive: true, //turn on responsive mode changes with page size
+                maintainAspectRatio: false, // if `true` causes weird layout issues
+                legend: { display: true },
+                title: {
+                    display: true,
+                    text: 'Survey Respondants'
+                }
+            }
+        });
     }
-    
-    function populateCharts(chartType,chartnumber){
-       console.log('populateCharts: '+chartType)
-       console.log('populateCharts: '+chartnumber)
-       switch (chartType){
-           case 'Off-Campus Workers':
-               currentData = currentData.filter(data=>data.inucla=='no')
-               addChart(yearChart,currentData)
-               map.fitBounds(offCampus.getBounds());
-               map.removeLayer(onCampus)
-               map.addLayer(offCampus)
-               break;
-           case 'On-Campus Workers':
-               currentData = currentData.filter(data=>data.inucla=='yes')
-               addChart(yearChart,currentData)
-               map.fitBounds(onCampus.getBounds());
-               map.removeLayer(offCampus)
-               map.addLayer(onCampus)
-               break;
-           case 'Undergraduate':
-               currentData = currentData.filter(data=>data.year=='Traditional Undergraduate')
-               addChart(whyjobChart,currentData)
-               addChart(complaintChart,currentData,2)
-               break;
-           case 'Graduate':
-               currentData = currentData.filter(data=>data.year=='Graduate')
-               addChart(whyjobChart,currentData)
-               addChart(complaintChart,currentData,2)
-               break;
-           case 'Nontraditional Undergraduate':
-               currentData = currentData.filter(data=>data.year=='Nontraditional Undergraduate')
-               addChart(whyjobChart,currentData)
-               addChart(complaintChart,currentData,2)
-               break;
-       }}
+
+    document.getElementById("chart").onclick = function (evt) {
+        var activePoints = theChart.getElementsAtEventForMode(evt, 'point', theChart.options);
+        var firstPoint = activePoints[0];
+        // console.log(activePoints[0].index)
+        var label = theChart.data.labels[activePoints[0].index];
+        // var value = myChart.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
+        console.log(label)
+        doSomethingWithChart(label)
+    };
+
+    function doSomethingWithChart(label){
+        let chartTitle = document.getElementById("chart-title") // do if statements for chart labels -> turn into map layer
+        chartTitle.innerHTML = label
+    }
+
+
+
+
