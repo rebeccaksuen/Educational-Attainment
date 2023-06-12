@@ -108,7 +108,7 @@ function addMarker(data){
             datasets: [
                 {
                 label: "Count",
-                backgroundColor: ["blue", "red", "yellow"],
+                backgroundColor: ["#0038a7", "#ce1127", "#fecb00"],
                 data: [supportReceived,supportNotReceived,supportUnsure]
                 }
             ]
