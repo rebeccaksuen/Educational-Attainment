@@ -11,14 +11,14 @@ let supportUnsure = 0;
 
 let theChart;
 
-let yesSupport = L.featureGroup(); //map toggle variables
+let yesSupport = L.featureGroup(); // layer andmap toggle variables
 let noSupport = L.featureGroup();
 let unsureSupport = L.featureGroup();
 
 let layers = {
     "Received Family Support": yesSupport,
     "Did Not Receive Family Support": noSupport,
-    "Unsure if Received Family Suport": unsureSupport
+    "Unsure": unsureSupport
 }
 
 let circleOptions = {
@@ -84,10 +84,10 @@ function addMarker(data){
         console.log(results)
         results.data.forEach(data => {
             console.log(data)
-            addMarker(data.lat,data.lng,data['Where is your hometown?'])
+            addMarker(data)
             filterSupportResponses(data.supportReceived)
         })
-        addChart()
+        addChart();
         // layer stuff
         yesSupport.addTo(map)
         noSupport.addTo(map)
@@ -97,25 +97,6 @@ function addMarker(data){
     }
     loadData(dataUrl)
 
-//toggle layers code
-
-    // adding chart here (step 5 on prof al's tutorial)
-    // function addChart(){
-    //     new chart(document.getElementById("chart"), { 
-    //         type: 'pie',
-    //         data: {
-    //             labels:["Received Family Support", "Did Not Receive Family Support", "Unsure if Received Family Support"],
-    //             datasets: [
-    //                 {
-    //                     label: "count",
-    //                     backgroundColor: ["red", "blue", "yellow"],
-    //                     data: [supportReceived, supportNotReceived, supportUnsure]
-    //                 }
-    //             ]
-
-    //         },
-    //     })
-    // }
 
     function addChart(){
         // create the new chart here, target the id in the html called "chart"
