@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PEAS</title>
+        <!-- hint: remember to change your page title! -->
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="#">
+        <link rel="stylesheet" href="styles/style.css">
+
+        <!-- Leaflet's css-->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+        <!-- Leaflet's JavaScript-->
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+       <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-core.min.js"></script>
+      <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pie.min.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <!-- space for a menu -->
+        </header>
+        <nav></nav>
+        <div class="main">
+            <div id="the_map"></div>
+            <div id="information">
+                <div id="chart-title">
+                    <h2>Do you feel that your parents supported you in higher education?</h2>
+                </div>
+                <div class="container" style="width:100%">
+                    <canvas id="chart"></canvas>
+             </div>
+             <!--probably move this-->
+            </div>
+            <button class="button" id="backbutton"> go back </button>
+           </div>
+           <!--add project and map description here, including future use and other impact-->
+        <div id="description">
+            <h1>Pilipinx First-Generation UCLA Students' Hometowns Map</h1>
+        </div>
+        </div>
+        <script src="js/init.js"></script>
+    </body>
+</html>
