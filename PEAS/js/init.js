@@ -22,17 +22,19 @@ let layers = {
 }
 
 let circleOptions = {
-    radius: 4,
+    radius: 5,
     fillColor: "#ff7800",
-    color: "#000",
+    color: "#",
     weight: 1,
     opacity: 1,
-    fillOpacity: 0.8
+    fillOpacity: 0.7
 }
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
+
+// add polygons to map if have time
 
     // map points
     const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQSn415MNwpNpFmQyxj2WbVnRJSDx85ki66G7zrcfeHpl8DSiErm9xD8psQxTwbPAzDLQeRMI8kF6eR/pub?output=csv"
@@ -40,17 +42,19 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     // create a function to add markers & layer stuff
 function addMarker(data){
     if(data['supportReceived']=="Yes"){
-        yesSupport.addLayer(L.circleMarker([data.lat,data.lng]))
-        circleOptions.fillColor="blue"
+        circleOptions.fillColor="#0038a7"
+        yesSupport.addLayer(L.circleMarker([data.lat,data.lng],circleOptions))
     }
     if (data['supportReceived']=="No"){
-        circleOptions.fillColor="red"
-        noSupport.addLayer(L.circleMarker([data.lat,data.lng]))
+        circleOptions.fillColor="#ce1127"
+        noSupport.addLayer(L.circleMarker([data.lat,data.lng],circleOptions))
     }
     if (data['supportReceived']=="I am unsure."){
-        circleOptions.fillColor="yellow"
-        unsureSupport.addLayer(L.circleMarker([data.lat,data.lng]))
+        circleOptions.fillColor="#fecb00"
+        unsureSupport.addLayer(L.circleMarker([data.lat,data.lng],circleOptions))
     }
+    let affectApplicationButton = createButton(data.lat,data.lng,data['affectApplication'])
+    let affectSuccessButton = createButton(data.lat,data.lng,data['affectSuccess'])
     return data
 }
 
@@ -108,7 +112,7 @@ function addMarker(data){
             datasets: [
                 {
                 label: "Count",
-                backgroundColor: ["blue", "red", "yellow"],
+                backgroundColor: ["#0038a7", "#ce1127", "#fecb00"],
                 data: [supportReceived,supportNotReceived,supportUnsure]
                 }
             ]
@@ -124,7 +128,8 @@ function addMarker(data){
             }
         });
     }
-
+// chart interaction 
+// then we also want to be able to toggle with a flag (if true -> false; if false -> true)
     document.getElementById("chart").onclick = function (evt) {
         var activePoints = theChart.getElementsAtEventForMode(evt, 'point', theChart.options);
         var firstPoint = activePoints[0];
@@ -132,14 +137,28 @@ function addMarker(data){
         var label = theChart.data.labels[activePoints[0].index];
         // var value = myChart.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
         console.log(label)
-        doSomethingWithChart(label)
+        showButtons() //run the function
     };
+// when toggle -> pop up corresponding responses and a back button? corresponding layer changes on map too
+// so need if then for the function
 
-    function doSomethingWithChart(label){
-        let chartTitle = document.getElementById("chart-title") // do if statements for chart labels -> turn into map layer
-        chartTitle.innerHTML = label
+//first making the buttons that will pop up with the responses on them
+    function createButton(lat,lng,title, data){
+        const newButton = document.createElement("button")
+        newButton.id = "button"+title; // gives the button a unique id
+    newButton.innerHTML = title; 
+    newButton.setAttribute("lat",lat);
+    newButton.setAttribute("lng",lng);
+    newButton.addEventListener('click', function(){
+        map.flyTo([lat,lng]); //this is the flyTo from Leaflet
+    })
+    const spaceForButtons = document.getElementById('storyButtons')
+    document.body.appendChild(newButton);
+}
+//when click -> show buttons
+    function showButtons(){
+        let storyButtons = document.getElementById("storyButtons");
+        storyButtons.style.display = "block";
     }
-
-
 
 
