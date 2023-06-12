@@ -1,3 +1,6 @@
+/* font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 body{
     display: grid;
     grid-auto-rows: auto 1fr;
@@ -10,6 +13,11 @@ header{
     grid-area: header;
     justify-self: center;
     align-self: center;
+}
+h1 {
+  background: linear-gradient(45deg, #FFD7D7, #FFE7A6, #CBE6FF, #FFFFFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 #footer{
     grid-area: footer;
@@ -29,6 +37,7 @@ header{
 #the_map{
     height:80vh;
     grid-area: main_map;
+    padding: 20px;
 }
 
 html, body, #container {
