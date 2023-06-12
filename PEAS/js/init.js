@@ -1,5 +1,5 @@
 // declare variables
-let mapOptions = {'center': [34.0709,-118.444],'zoom':5}
+let mapOptions = {'center': [34.0709,-118.444],'zoom':7}
 
 // use the variables
 const map = L.map('the_map').setView(mapOptions.center, mapOptions.zoom);
@@ -10,8 +10,7 @@ let supportNotReceived = 0;
 let supportUnsure = 0;
 
 let theChart;
-
-let yesSupport = L.featureGroup(); // layer andmap toggle variables
+let yesSupport = L.featureGroup(); // layer and map toggle variables
 let noSupport = L.featureGroup();
 let unsureSupport = L.featureGroup();
 
@@ -141,7 +140,7 @@ function addMarker(data){
 // when toggle -> pop up corresponding responses and a back button? corresponding layer changes on map too
 // so need if then for the function
 
-//first making the buttons that will pop up with the responses on them
+// 1. making the buttons that will pop up with the responses on them
     function createButton(lat,lng,title){
         const newButton = document.createElement("button")
         newButton.id = "button"+title; // gives the button a unique id
@@ -149,15 +148,34 @@ function addMarker(data){
     newButton.setAttribute("lat",lat);
     newButton.setAttribute("lng",lng);
     newButton.addEventListener('click', function(){
-        map.flyTo([lat,lng]); //this is the flyTo from Leaflet
+        map.flyTo([lat,lng], 8); 
     })
     const spaceForButtons = document.getElementById('storyButtons')
     document.body.appendChild(newButton);
+
 }
-//when click -> show buttons
-    function showButtons(){
-        let storyButtons = document.getElementById("storyButtons");
-        storyButtons.style.display = "block";
+
+//eventListener when click -> show buttons 
+    document.getElementById("chart").addEventListener("click",showButtons) 
+    
+    // how to specify parts on the chart?
+    let chartTriggers ={
+        "chart":"",
+        "Received Family Support": "yesSupportLayer",
+        "Did Not Receive Family Support": "noSupportLayer",
+        "Unsure": "unsureSupportLayer"
     }
-
-
+    let yesSupportLayer ={
+        //map layer
+        //button type
+        //title
+    }
+// similar to Tax Evaders changeCharts function
+    function chartTrigger(target){
+        chart = target;
+        console.log('switch layer' + chart)
+        let storyLayer = chartTriggers[target]
+        switchLayer(target,storyLayer)
+        // let storyButtons = document.getElementById("storyButtons");
+        // storyButtons.style.display = "block";
+        }
