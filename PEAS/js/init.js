@@ -34,6 +34,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
+// add polygons to map if have time
+
     // map points
     const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQSn415MNwpNpFmQyxj2WbVnRJSDx85ki66G7zrcfeHpl8DSiErm9xD8psQxTwbPAzDLQeRMI8kF6eR/pub?output=csv"
 
@@ -51,6 +53,8 @@ function addMarker(data){
         circleOptions.fillColor="#fecb00"
         unsureSupport.addLayer(L.circleMarker([data.lat,data.lng],circleOptions))
     }
+    let affectApplicationButton = createButton(data.lat,data.lng,data['affectApplication'])
+    let affectSuccessButton = createButton(data.lat,data.lng,data['affectSuccess'])
     return data
 }
 
@@ -124,7 +128,7 @@ function addMarker(data){
             }
         });
     }
-// chart interaction --> when we clikc on the each section, we want to change the chart title to the label, and the map layer to match the label
+// chart interaction --> when we click on the each section, we want to change the chart title to the label, and the map layer to match the label --> when the map layer changes, the visible responses should also change
 // then we also want to be able to toggle with a flab (if true -> false; if false -> true)
     document.getElementById("chart").onclick = function (evt) {
         var activePoints = theChart.getElementsAtEventForMode(evt, 'point', theChart.options);
@@ -133,13 +137,29 @@ function addMarker(data){
         var label = theChart.data.labels[activePoints[0].index];
         // var value = myChart.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
         console.log(label)
-        doSomethingWithChart(SupportResponses) //run the function
+        toggleChart(SupportResponses) //run the function
     };
+// when toggle -> pop up corresponding responses and a back button? corresponding layer changes on map too
+// so need if then for the function
 
-    function doSomethingWithChart(SupportResponses){
-        let chartLayer = document.getElementById("layers") // do if statements for chart labels -> turn into map layer
-        chartLayer.innerHTML = 
-        element.classList.toggle("chart-title");
+//first making the buttons that will pop up with the responses on them
+    function createButton(lat,lng,title){
+        const newButton = document.createElement("button")
+        newButton.id = "button"+title; // gives the button a unique id
+    newButton.innerHTML = title; 
+    newButton.setAttribute("lat",lat);
+    newButton.setAttribute("lng",lng);
+    newButton.addEventListener('click', function(){
+        map.flyTo([lat,lng]); //this is the flyTo from Leaflet
+    })
+    const spaceForButtons = document.getElementById('placeForButtons')
+    document.body.appendChild(newButton);
+}
+
+    function toggleChart(SupportResponses){
+        if (supportResponse=="Yes"){
+            
+         }
     }
 
 
