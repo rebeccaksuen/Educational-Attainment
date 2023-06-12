@@ -22,10 +22,12 @@ let layers = {
 }
 
 let circleOptions = {
-    radius: 1,
+    radius: 5,
+    fillColor: "#ff7800",
+    color: "#",
     weight: 1,
     opacity: 1,
-    fillOpacity: 1
+    fillOpacity: 0.7
 }
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -38,16 +40,16 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     // create a function to add markers & layer stuff
 function addMarker(data){
     if(data['supportReceived']=="Yes"){
-        yesSupport.addLayer(L.circleMarker([data.lat,data.lng]))
-        circleOptions.fillColor="color"
+        circleOptions.fillColor="#0038a7"
+        yesSupport.addLayer(L.circleMarker([data.lat,data.lng],circleOptions))
     }
     if (data['supportReceived']=="No"){
-        noSupport.addLayer(L.circleMarker([data.lat,data.lng]))
-        circleOptions.fillColor="red"
+        circleOptions.fillColor="#ce1127"
+        noSupport.addLayer(L.circleMarker([data.lat,data.lng],circleOptions))
     }
     if (data['supportReceived']=="I am unsure."){
-        circleOptions.fillColor="yellow"
-        unsureSupport.addLayer(L.circleMarker([data.lat,data.lng]))
+        circleOptions.fillColor="#fecb00"
+        unsureSupport.addLayer(L.circleMarker([data.lat,data.lng],circleOptions))
     }
     return data
 }
@@ -122,7 +124,8 @@ function addMarker(data){
             }
         });
     }
-
+// chart interaction --> when we clikc on the each section, we want to change the chart title to the label, and the map layer to match the label
+// then we also want to be able to toggle with a flab (if true -> false; if false -> true)
     document.getElementById("chart").onclick = function (evt) {
         var activePoints = theChart.getElementsAtEventForMode(evt, 'point', theChart.options);
         var firstPoint = activePoints[0];
@@ -130,12 +133,13 @@ function addMarker(data){
         var label = theChart.data.labels[activePoints[0].index];
         // var value = myChart.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
         console.log(label)
-        doSomethingWithChart(label)
+        doSomethingWithChart(SupportResponses) //run the function
     };
 
-    function doSomethingWithChart(label){
-        let chartTitle = document.getElementById("chart-title") // do if statements for chart labels -> turn into map layer
-        chartTitle.innerHTML = label
+    function doSomethingWithChart(SupportResponses){
+        let chartLayer = document.getElementById("layers") // do if statements for chart labels -> turn into map layer
+        chartLayer.innerHTML = 
+        element.classList.toggle("chart-title");
     }
 
 
