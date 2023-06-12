@@ -22,12 +22,10 @@ let layers = {
 }
 
 let circleOptions = {
-    radius: 4,
-    fillColor: "#ff7800",
-    color: "#000",
+    radius: 1,
     weight: 1,
     opacity: 1,
-    fillOpacity: 0.8
+    fillOpacity: 1
 }
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -41,11 +39,11 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 function addMarker(data){
     if(data['supportReceived']=="Yes"){
         yesSupport.addLayer(L.circleMarker([data.lat,data.lng]))
-        circleOptions.fillColor="blue"
+        circleOptions.fillColor="color"
     }
     if (data['supportReceived']=="No"){
-        circleOptions.fillColor="red"
         noSupport.addLayer(L.circleMarker([data.lat,data.lng]))
+        circleOptions.fillColor="red"
     }
     if (data['supportReceived']=="I am unsure."){
         circleOptions.fillColor="yellow"
