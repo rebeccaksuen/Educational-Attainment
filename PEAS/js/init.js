@@ -61,7 +61,6 @@ function addMarker(lat,lng,title,message){
     }
     
     function populateCharts(chartType,chartnumber){
-        //resize map to fit screen
        console.log('populateCharts: '+chartType)
        console.log('populateCharts: '+chartnumber)
        switch (chartType){
@@ -94,16 +93,4 @@ function addMarker(lat,lng,title,message){
                addChart(whyjobChart,currentData)
                addChart(complaintChart,currentData,2)
                break;
-           case 'Post-Graduate':
-               currentData = currentData.filter(data=>data.year=='Post-Grad')
-               addChart(whyjobChart,currentData)
-              addChart(complaintChart,currentData,2)
-               break;
-           // todo: add the rest of the cases here!
-           // case 'Graduate':
-               // 
-           
-           case 'defaultchart':
-               addChart(defaultChart,currentData)
-       }
-   }
+       }}
