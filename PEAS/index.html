@@ -13,8 +13,8 @@
         <!-- Leaflet's JavaScript-->
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-    </head>
-
+       <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-core.min.js"></script>
+      <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pie.min.js"></script>
     </head>
 
     <body>
@@ -28,12 +28,8 @@
                 <div id="chart-title">
                     <h2>Do you feel that your parents supported you in higher education?</h2>
                 </div>
-                <div class="chart-container" style="width:100%">
+                <div class="container" style="width:100%">
                     <canvas id="chart"></canvas>
-                </div>
-                <div id="chart-title2"></div>
-                <div class="chart-container" style="width:100%">
-                    <canvas id="secondchart"></canvas>
              </div>
              <!--probably move this-->
             </div>
@@ -43,9 +39,6 @@
         <div id="description">
             <h1>Pilipinx First-Generation UCLA Students' Hometowns Map</h1>
         </div>
-        </div>
-        <div id="footer">
-            Copyright(2023)
         </div>
         <script src="js/init.js"></script>
     </body>
