@@ -54,7 +54,7 @@ function addMarker(lat,lng,title,message){
     // chart stuff testing
     let defaultChart = {
         "labels": ["Yes", "No", "Unsure"],
-        "datasets": [], //stuck on how to define variables here
+        "datasets": [],
         "colors":["#FFBCCE","#8FF0DE"],
         "chartname": "defaultchart",
         "title":"Recieved Family Support?"
