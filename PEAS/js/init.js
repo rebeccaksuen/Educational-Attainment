@@ -53,8 +53,8 @@ function addMarker(data){
         circleOptions.fillColor="#fecb00"
         unsureSupport.addLayer(L.circleMarker([data.lat,data.lng],circleOptions))
     }
-    let affectApplicationButton = createButton(data.lat,data.lng,data['affectApplication'])
-    let affectSuccessButton = createButton(data.lat,data.lng,data['affectSuccess'])
+    createButton(data.lat,data.lng,data['affectApplication'])
+    createButton(data.lat,data.lng,data['affectSuccess'])
     return data
 }
 
@@ -92,7 +92,6 @@ function addMarker(data){
             filterSupportResponses(data.supportReceived)
         })
         addChart();
-        // layer stuff
         yesSupport.addTo(map)
         noSupport.addTo(map)
         unsureSupport.addTo(map)
@@ -107,7 +106,7 @@ function addMarker(data){
         theChart = new Chart(document.getElementById("chart"), {
             type: 'pie', //can change to 'bar','line' chart or others
             data: {
-                // labels for data here
+
             labels: ["Received Family Support","Did Not Receive Family Support", "Unsure"],
             datasets: [
                 {
@@ -137,13 +136,13 @@ function addMarker(data){
         var label = theChart.data.labels[activePoints[0].index];
         // var value = myChart.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
         console.log(label)
-        showButtons() //run the function
+        // showButtons() //run the function
     };
 // when toggle -> pop up corresponding responses and a back button? corresponding layer changes on map too
 // so need if then for the function
 
 //first making the buttons that will pop up with the responses on them
-    function createButton(lat,lng,title, data){
+    function createButton(lat,lng,title){
         const newButton = document.createElement("button")
         newButton.id = "button"+title; // gives the button a unique id
     newButton.innerHTML = title; 
