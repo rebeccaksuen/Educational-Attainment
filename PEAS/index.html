@@ -13,8 +13,8 @@
         <!-- Leaflet's JavaScript-->
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-       <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-core.min.js"></script>
-      <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pie.min.js"></script>
+        <!--chart.js library for charts-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js"></script>
     </head>
 
     <body>
@@ -23,7 +23,16 @@
         </header>
         <nav></nav>
         <div class="main">
-            <div id="the_map"></div>
+            <div id="the_map">
+                <div id="legend">
+                    <!--still need to finish legend html-->
+                    <div id="supportLegend">
+                        <input type="checkbox" id="receivedSupport">
+                            Received Family Support <svg height='10' width='10'><circle cx='5' cy='5' r='4' stroke='black' stroke-width='1' fill='red' /></svg>
+                        
+                    </div>
+                </div>
+            </div>
             <div id="information">
                 <div id="chart-title">
                     <h2>Do you feel that your parents supported you in higher education?</h2>
