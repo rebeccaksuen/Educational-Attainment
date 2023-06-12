@@ -128,8 +128,8 @@ function addMarker(data){
             }
         });
     }
-// chart interaction --> when we click on the each section, we want to change the chart title to the label, and the map layer to match the label --> when the map layer changes, the visible responses should also change
-// then we also want to be able to toggle with a flab (if true -> false; if false -> true)
+// chart interaction 
+// then we also want to be able to toggle with a flag (if true -> false; if false -> true)
     document.getElementById("chart").onclick = function (evt) {
         var activePoints = theChart.getElementsAtEventForMode(evt, 'point', theChart.options);
         var firstPoint = activePoints[0];
@@ -137,13 +137,13 @@ function addMarker(data){
         var label = theChart.data.labels[activePoints[0].index];
         // var value = myChart.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
         console.log(label)
-        toggleChart(SupportResponses) //run the function
+        showButtons() //run the function
     };
 // when toggle -> pop up corresponding responses and a back button? corresponding layer changes on map too
 // so need if then for the function
 
 //first making the buttons that will pop up with the responses on them
-    function createButton(lat,lng,title){
+    function createButton(lat,lng,title, data){
         const newButton = document.createElement("button")
         newButton.id = "button"+title; // gives the button a unique id
     newButton.innerHTML = title; 
@@ -152,16 +152,13 @@ function addMarker(data){
     newButton.addEventListener('click', function(){
         map.flyTo([lat,lng]); //this is the flyTo from Leaflet
     })
-    const spaceForButtons = document.getElementById('placeForButtons')
+    const spaceForButtons = document.getElementById('storyButtons')
     document.body.appendChild(newButton);
 }
-
-    function toggleChart(SupportResponses){
-        if (supportResponse=="Yes"){
-            
-         }
+//when click -> show buttons
+    function showButtons(){
+        let storyButtons = document.getElementById("storyButtons");
+        storyButtons.style.display = "block";
     }
-
-
 
 
