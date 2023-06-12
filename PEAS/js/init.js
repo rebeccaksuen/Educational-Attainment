@@ -110,7 +110,7 @@ function addMarker(lat,lng,title,message){
             datasets: [
                 {
                 label: "Count",
-                backgroundColor: ["green", "red", "yellow"],
+                backgroundColor: ["blue", "red", "yellow"],
                 data: [supportReceived,supportNotReceived,supportUnsure]
                 }
             ]
