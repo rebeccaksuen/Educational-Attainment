@@ -21,7 +21,3 @@
 ## In the future, we hope that this resource will be developed upon and continue to be used by first-generation Pilipinx students at UCLA to advocate for more resources to support them in their journey through higher educastion. Additionally, we hope that SPEAR can utilize this resource to continue to listen to first-gen Pilipinx stories, including how they might remain the same or change over time with resources provided by SPEAR. We hope that the data collected can provide more insight on the community conditions relating to family support that many first-gen Pilipinx students face, and share our findings with SPEAR to uplift first-generation Pilipinx students by creating and bringing more resources that are more accessible to family members to help them better understand the college process (ie: pamphlets in foreign languages). Our map could also potentially be used to provide data and identify first-gen Pilipinx communities that could benefit from greater involvement from programs working towards educational attainment and aiding families with support. Students can also point out what struggles they face, and what kind of support they might want to receive. SPEAR can then use this data to work towards providing resources or raising awareness about resources catered towards first-generation students, or catered towards family members to help them better provide support for students.
 
 # Screenshots
-
-
-
-
