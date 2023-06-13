@@ -53,3 +53,6 @@ function chartTrigger(target){
     }
 
 //add another event to get back to chart
+function removeChartTrigger(){
+    chart = outsideTarget;
+}
