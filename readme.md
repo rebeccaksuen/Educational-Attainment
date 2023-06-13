@@ -1,11 +1,11 @@
 # Project Name:
-## Pilipinx Educational Attainment Survey (PEAS)
+## [Pilipinx Educational Attainment Survey (PEAS)](http://127.0.0.1:5500/PEAS/index.html)
 
 # Table of Contents
-* [Objective](http://127.0.0.1:5500/PEAS/index.html)
-* [Community]
-* [Technology Used]
-* [Repurposing]
+* [Objective](https://github.com/rebeccaksuen/Educational-Attainment#objective)
+* [Community](http://127.0.0.1:5500/PEAS/index.html)
+* [Technology Used](http://127.0.0.1:5500/PEAS/index.html)
+* [Repurposing](http://127.0.0.1:5500/PEAS/index.html)
 * [Screenshots]
 
 # Objective
@@ -20,6 +20,8 @@
 
 # Repurposing
 ## In the future, we hope that this resource will be developed upon and continue to be used by first-generation Pilipinx students at UCLA to advocate for more resources. Additionally, we hope that SPEAR can utilize this resource to continue to listen to first-gen Pilipinx stories, including how they might remain the same or echange over time with resources provided by SPEAR. 
+
+# Screenshots
 
 
 
