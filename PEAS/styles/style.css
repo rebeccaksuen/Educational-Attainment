@@ -72,10 +72,6 @@ html, body, #container {
     padding: 0;
   }
 
-  #spaceForCards {
-    max-height: 100px;
-  }
-
 /* navigation bar */
 .links {
 	background-color: #123;
@@ -145,4 +141,8 @@ th {
     padding: 10px;
     margin: 10px;
     box-shadow: 0 0 32px #0003;
+}
+
+#information{
+  max-height:10%;
 }
