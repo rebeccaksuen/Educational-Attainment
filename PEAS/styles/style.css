@@ -1,15 +1,43 @@
+/* font */
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
 body{
     display: grid;
     grid-auto-rows: auto 1fr;
     grid-template-areas: "header" "main_content" "footer";
-    background-color: rgb(43, 55, 191);
-    color:aliceblue
+    background-color: rgb(19, 27, 61);
+    color:rgb(255, 255, 255);
+    row-gap: 20px;
+    font-family: 'Montserrat', sans-serif;
 }
 
-header{
+header {
     grid-area: header;
-}
-
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo-and-title {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: start;
+    gap: 20px; /* You can adjust the space between the logo and the title */
+  }
+  
+  .logo {
+    width: 100%;
+    max-width: 54px;
+    height: auto;
+    align-self: center;
+  }
+  
+  h1 {
+    background: linear-gradient(45deg, #FFD7D7, #FFE7A6, #CBE6FF, #FFFFFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
 #footer{
     grid-area: footer;
 }
@@ -17,8 +45,15 @@ header{
 .main{
     grid-area: main_content;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: "main_map content";
+    grid-template-rows: 50px 1fr;
+    grid-template-areas: "maptitle maptitle" "main_map content";
     display: grid;
+    gap: 7px;
+}
+#maptitle{
+    grid-area: maptitle;
+    justify-self: center;
+    align-self: center;
 }
 
 #contents{
@@ -35,4 +70,66 @@ html, body, #container {
     height: 100%;
     margin: 0;
     padding: 0;
+  }
+
+/* navigation bar */
+.links {
+	background-color: #123;
+	background-image: linear-gradient(to bottom, #0003, transparent);
+	border-bottom: 1px solid #0003;
+	box-shadow: 0 0 32px #0003;
+	font-weight: 300;
+}
+.links > a {
+	color: #9ab;
+	padding: .75em;
+	text-align: center;
+	text-decoration: none;
+	transition: all .5s;
+}
+.links > a:hover {
+	background: #d085149c;
+	color: #adf;
+}
+.links > .line {
+	background: #68a;
+	height: 1px;
+	pointer-events: none;
+}
+
+/* The Magic */
+.links {
+	display: grid;
+	grid-template-columns: repeat(var(--items), 1fr);
+	position: relative;
+    justify-items: center;
+}
+.links > .line {
+	opacity: 0;
+	transition: all .5s;
+    position: absolute;
+	bottom: 0;
+	left: var(--left, calc(100% / var(--items) * (var(--index) - 1)));
+	width: var(--width, calc(100% / var(--items)));
+	--index: 0;
+}
+.links > a:hover ~ .line {
+	opacity: 1;
+}
+
+th {
+	border: 0px solid #ddd;
+	padding: 3px;
+  }
+  
+ tr:nth-child(even){background-color: #f2f2f2;}
+  
+ tr:hover {background-color: #ddd;}
+  
+th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #a7d09b;
+	color: white;
   }

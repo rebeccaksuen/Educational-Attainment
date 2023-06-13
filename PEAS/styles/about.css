@@ -1,0 +1,35 @@
+body {
+    background-color: navy;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: rgb(145, 145, 238);
+}
+
+section#about-project h2 {
+    color: red;
+}
+
+section#about-us h2 {
+    color: yellow;
+}
+
+.team-images {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.team-images img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.team-images div {
+    text-align: center;
+    margin-bottom: 50px;
+}

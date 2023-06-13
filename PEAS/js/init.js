@@ -1,96 +1,115 @@
-// declare variables
-let mapOptions = {'center': [34.0709,-118.444],'zoom':5}
+// ===========Functions================
 
-// use the variables
-const map = L.map('the_map').setView(mapOptions.center, mapOptions.zoom);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
-
-fetch("map.geojson")
-    .then(response => {
-        return response.json()
-    })
-    .then(data =>{
-        // Basic Leaflet method to add GeoJSON data
-        L.geoJSON(data, {
-                pointToLayer: (feature, latlng) => { 
-                    return L.circleMarker(latlng, {color: feature.properties.color})
-                }
-            }).bindPopup(layer => {
-                return layer.feature.properties.place;
-            }).addTo(map);
-    })
-
-    // map points
-    const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQSn415MNwpNpFmQyxj2WbVnRJSDx85ki66G7zrcfeHpl8DSiErm9xD8psQxTwbPAzDLQeRMI8kF6eR/pub?output=csv"
-
-    // create a function to add markers
-function addMarker(lat,lng,title,message){
-    console.log(message)
-    L.marker([lat,lng]).addTo(map).bindPopup(`<h2>${title}</h2> <h3>${message}</h3>`)
-    return message
+function initalize(){
+    loadData(dataUrl)
+    addBaseMap()
 }
 
-    function loadData(url){
-        Papa.parse(url, {
-            header: true,
-            download: true,
-            complete: results => processData(results)
-        })
-    }
-    
-    function processData(results){
-        console.log(results)
-        results.data.forEach(data => {
-            console.log(data)
-            addMarker(data.lat,data.lng,data['Where is your hometown?'],data['Do you feel that you received support from your family in higher education?'])
-        })
-    }
-    
-    loadData(dataUrl)
+function loadData(url){
+    Papa.parse(url, {
+        header: true,
+        download: true,
+        complete: results => processData(results)
+    })
+}
 
-    // chart stuff testing
-    let defaultChart = {
-        "labels": ["Yes", "No", "Unsure"],
-        "datasets": [],
-        "colors":["#FFBCCE","#8FF0DE"],
-        "chartname": "defaultchart",
-        "title":"Recieved Family Support?"
+function processData(results){
+    console.log(results)
+    results.data.forEach(data => {
+        console.log(data)
+        addMarker(data)
+        filterSupportResponses(data.supportReceived)
+    })
+    addChart();
+    yesSupport.addTo(map)
+    noSupport.addTo(map)
+    unsureSupport.addTo(map)
+    let allLayers = L.featureGroup([yesSupport,noSupport,unsureSupport]);
+    map.fitBounds(allLayers.getBounds());
+}
+
+
+// create a function to add markers & layer stuff
+function addMarker(data){
+    if(data['supportReceived']=="Yes"){
+        circleOptions.fillColor="#0038a7"
+        yesSupport.addLayer(L.circleMarker([data.lat,data.lng],circleOptions))
     }
-    
-    function populateCharts(chartType,chartnumber){
-       console.log('populateCharts: '+chartType)
-       console.log('populateCharts: '+chartnumber)
-       switch (chartType){
-           case 'Off-Campus Workers':
-               currentData = currentData.filter(data=>data.inucla=='no')
-               addChart(yearChart,currentData)
-               map.fitBounds(offCampus.getBounds());
-               map.removeLayer(onCampus)
-               map.addLayer(offCampus)
-               break;
-           case 'On-Campus Workers':
-               currentData = currentData.filter(data=>data.inucla=='yes')
-               addChart(yearChart,currentData)
-               map.fitBounds(onCampus.getBounds());
-               map.removeLayer(offCampus)
-               map.addLayer(onCampus)
-               break;
-           case 'Undergraduate':
-               currentData = currentData.filter(data=>data.year=='Traditional Undergraduate')
-               addChart(whyjobChart,currentData)
-               addChart(complaintChart,currentData,2)
-               break;
-           case 'Graduate':
-               currentData = currentData.filter(data=>data.year=='Graduate')
-               addChart(whyjobChart,currentData)
-               addChart(complaintChart,currentData,2)
-               break;
-           case 'Nontraditional Undergraduate':
-               currentData = currentData.filter(data=>data.year=='Nontraditional Undergraduate')
-               addChart(whyjobChart,currentData)
-               addChart(complaintChart,currentData,2)
-               break;
-       }}
+    if (data['supportReceived']=="No"){
+        circleOptions.fillColor="#ce1127"
+        noSupport.addLayer(L.circleMarker([data.lat,data.lng],circleOptions))
+    }
+    if (data['supportReceived']=="I am unsure."){
+        circleOptions.fillColor="#fecb00"
+        unsureSupport.addLayer(L.circleMarker([data.lat,data.lng],circleOptions))
+    }
+    createButton(data)
+    return data
+}  
+// pie chart stuff UNDER HERE
+// toggle variables - variables - supportReceived (red), supportNotReceived (blue), supportUnsure (yellow)
+
+function filterSupportResponses(supportResponse){
+    if (supportResponse=="Yes"){
+        supportReceived +=1
+        return
+    }
+    if (supportResponse=="No"){
+        supportNotReceived +=1
+        return
+    }
+    if (supportResponse=="I am unsure."){
+        supportUnsure +=1
+        return
+    }
+};
+
+// when toggle -> pop up corresponding responses and a back button? corresponding layer changes on map too
+// so need if then for the function
+
+// 1. making the buttons that will pop up with the responses on them
+function createButton(data){
+    console.log(data)
+    const newButton = document.createElement("button")
+    newButton.innerHTML = data.affectSuccess +"<br>"+ data.affectApplication; 
+    newButton.addEventListener('click', function(){
+        map.flyTo([data.lat,data.lng], 8); 
+    })
+    const spaceForButtons = document.getElementById('storyButtons')
+    document.body.appendChild(newButton);
+}
+
+        // 1. filter results by clicking on pie slice
+        // 2. hide pie chart on click 
+            //2b. display responses
+        // 3. return to pie chart display by clicking outside
+
+function onlyShowClickedLayer(layers){ // 1. filter results on map
+    map.eachLayer(function (layers) {
+        map.removeLayer(layers);
+        
+    });
+    addBaseMap()
+    map.addLayer(layers);
+    map.fitBounds(layers.getBounds(),{maxZoom : 10});
+}
+
+function addBaseMap(){
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+}
+
+// #2a hide pie chart (in createCharts.js)
+// #2b show button responses
+function clickShowResponses(storyButtons){
+    var buttons = document.getElementById('storyButtons').hidden = true;
+    buttons.style.display = "none";
+}
+
+
+
+
+
+initalize()
