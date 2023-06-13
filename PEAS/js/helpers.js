@@ -28,10 +28,10 @@ function createCards(data){
     // card coloring
     const themeColor = cardColors[data.supportReceived]
     console.log(themeColor)
-    styleCard(themeColor)
+    //styleCard(themeColor)
 
     //need help here
-    // let styleCard = color;
+    //let styleCard = color;
 
     let formattedSurveyText = question1.innerHTML + "<br>" + question2.innerHTML
     cardText.innerHTML = formattedSurveyText
