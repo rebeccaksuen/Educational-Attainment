@@ -85,7 +85,7 @@ function createButton(data){
             //2b. display responses
         // 3. return to pie chart display by clicking outside
 
-function onlyShowClickedLayer(layers){
+function onlyShowClickedLayer(layers){ // 1. filter results on map
     map.eachLayer(function (layers) {
         map.removeLayer(layers);
         
@@ -101,7 +101,12 @@ function addBaseMap(){
         }).addTo(map);
 }
 
-
+// #2a hide pie chart (in createCharts.js)
+// #2b show button responses
+function clickShowResponses(storyButtons){
+    var buttons = document.getElementById('storyButtons').hidden = true;
+    buttons.style.display = "none";
+}
 
 
 
