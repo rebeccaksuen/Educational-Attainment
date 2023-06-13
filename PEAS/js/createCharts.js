@@ -31,7 +31,6 @@ function addChart(){
 
 }
 // chart interaction 
-// then we also want to be able to toggle with a flag (if true -> false; if false -> true)
 document.getElementById("chart").onclick = function (evt) {
     var activePoints = theChart.getElementsAtEventForMode(evt, 'point', theChart.options);
     var firstPoint = activePoints[0];
@@ -60,26 +59,4 @@ function chartTrigger(target){
     // clickShowResponses(storyLayer);
     }
     
-// #2a hide pie chart (in createCharts.js)☑️
-// #2b show button responses
-// function clickShowResponses(thisLayer){
-//     // var buttons = document.getElementById('storyButtons').hidden = true;
-//     // buttons.style.display = "none";
-
-//     // 2b-1 loop through this particular map layers's features
-//     console.log(thisLayer)
-//     thisLayer.eachLayer(function(layer){
-//         console.log(layer.feature.properties)
-//     })
-
-// }
-
-    // console.log('hide buttons')
-    // console.log(storyLayer)
-
-
-
 //add another event to get back to chart
-function removeChartTrigger(){
-    chart = outsideTarget;
-}

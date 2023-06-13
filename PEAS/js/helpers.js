@@ -37,6 +37,7 @@ function createCards(data){
 function removeAllCards(){
     const spaceForCards = document.getElementById("spaceForCards")
     spaceForCards.innerHTML = `<button onclick="addChart()">Back to pie chart</button>`
+    // set map back to original mapOptions, reverse onlyShowClickedLayer(storyLayer)
 }
 
 window.onclick = function(event) {
