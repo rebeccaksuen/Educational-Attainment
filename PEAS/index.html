@@ -6,6 +6,7 @@
         <meta charset="utf-8" />
         <link rel="shortcut icon" href="#">
         <link rel="stylesheet" href="styles/style.css">
+        <link rel="icon" type="image/x-icon" href="peaslogo.png">
 
         <!-- Leaflet's css-->
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
@@ -19,8 +20,12 @@
 
     <body>
         <header>
+            <div class="logo-and-title">
+                <img class="logo" src="peaslogo.png" alt="Logo" />
+                <h1> Pillipinx Educational Attainment Survey</h1>
+            </div>
             <!-- title -->
-            <h1> Pillipinx Educational Attainment</h1>
+            
             <!-- NAVIGATION BAR -->
             <nav class="links" style="--items: 3;">
                 <a href="index.html">Home</a>
@@ -33,11 +38,14 @@
         </header>
         <nav></nav>
         <div class="main">
+            <div id="maptitle">
+            <h2>Pilipinx First-Generation UCLA Students' Hometowns Map</h2>
+            </div>
             <div id="the_map"></div>
             <div id="information">
                 <div id="chart-title">
-                    <h2>Do you feel that your parents supported you in higher education?</h2>
-                    <p>Interact with sections of the pie chart to explore the map!</p>
+                    <h3>Do you feel that your parents supported you in higher education?</h3>
+                    <p><i>Interact with sections of the pie chart to explore the map!</i></p>
                 </div>
                 <div class="container" style="width:100%">
                     <canvas id="chart"></canvas>
@@ -45,9 +53,7 @@
                 <div id="storyButtons"></div>
             </div>
            <!--add project and map description here, including future use and other impact-->
-        <div id="description">
-            <h1>Pilipinx First-Generation UCLA Students' Hometowns Map</h1>
-        </div>
+>
         </div>
         <script src="js/init.js"></script>
     </body>

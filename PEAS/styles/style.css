@@ -1,24 +1,43 @@
 /* font */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
 body{
     display: grid;
     grid-auto-rows: auto 1fr;
     grid-template-areas: "header" "main_content" "footer";
     background-color: rgb(19, 27, 61);
-    color:rgb(255, 255, 255)
+    color:rgb(255, 255, 255);
+    row-gap: 20px;
+    font-family: 'Montserrat', sans-serif;
 }
 
-header{
+header {
     grid-area: header;
-    justify-self: center;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo-and-title {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: start;
+    gap: 20px; /* You can adjust the space between the logo and the title */
+  }
+  
+  .logo {
+    width: 100%;
+    max-width: 54px;
+    height: auto;
     align-self: center;
-}
-h1 {
-  background: linear-gradient(45deg, #FFD7D7, #FFE7A6, #CBE6FF, #FFFFFF);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+  }
+  
+  h1 {
+    background: linear-gradient(45deg, #FFD7D7, #FFE7A6, #CBE6FF, #FFFFFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
 #footer{
     grid-area: footer;
 }
@@ -26,8 +45,15 @@ h1 {
 .main{
     grid-area: main_content;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: "main_map content";
+    grid-template-rows: 50px 1fr;
+    grid-template-areas: "maptitle maptitle" "main_map content";
     display: grid;
+    gap: 7px;
+}
+#maptitle{
+    grid-area: maptitle;
+    justify-self: center;
+    align-self: center;
 }
 
 #contents{
@@ -37,7 +63,6 @@ h1 {
 #the_map{
     height:80vh;
     grid-area: main_map;
-    padding: 20px;
 }
 
 html, body, #container {
