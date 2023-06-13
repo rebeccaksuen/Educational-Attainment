@@ -1,5 +1,4 @@
-# Project Name:
-## [Pilipinx Educational Attainment Survey (PEAS)](http://127.0.0.1:5500/PEAS/index.html)
+# [Pilipinx Educational Attainment Survey (PEAS)](http://127.0.0.1:5500/PEAS/index.html)
 
 # Table of Contents
 * [Objective](https://github.com/rebeccaksuen/Educational-Attainment#objective)
