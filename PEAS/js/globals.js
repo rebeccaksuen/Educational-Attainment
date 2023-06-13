@@ -21,12 +21,12 @@ let layers = {
 }
 
 let circleOptions = {
-    radius: 5,
+    radius: 6,
     fillColor: "#ff7800",
     color: "#",
     weight: 1,
     opacity: 1,
-    fillOpacity: 0.7
+    fillOpacity: 0.9
 }
 
 // Get the modal
