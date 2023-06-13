@@ -1,7 +1,7 @@
-#Project Name:
-##Pilipinx Educational Attainment Survey (PEAS)
+# Project Name:
+## Pilipinx Educational Attainment Survey (PEAS)
 
-#Table of Contents
+# Table of Contents
 * [Objective](http://127.0.0.1:5500/PEAS/index.html)
 * [Community]
 * [Technology Used]
