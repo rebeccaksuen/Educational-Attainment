@@ -2,7 +2,6 @@
 <html>
     <head>
         <title>PEAS</title>
-        <!-- hint: remember to change your page title! -->
         <meta charset="utf-8" />
         <link rel="shortcut icon" href="#">
         <link rel="stylesheet" href="styles/style.css">
@@ -43,19 +42,25 @@
             </div>
             <div id="the_map"></div>
             <div id="information">
-                <div id="chart-title">
-                    <h3>Do you feel that your parents supported you in higher education?</h3>
-                    <p><i>Interact with sections of the pie chart to explore the map!</i></p>
+                <div id="spaceForCards"><button onclick="addChart()">Back to pie chart</button></div>
+                <div id="chartSpace">
+                        
+                    <div id="chart-title">
+                        
+                        <h3>Do you feel that your parents supported you in higher education?</h3>
+                        <p><i>Interact with sections of the pie chart to explore the map!</i></p>
+                    </div>
+
+                    <div class="container" style="width:100%">
+                        <canvas id="chart"></canvas>
+                    </div>
                 </div>
-                <div class="container" style="width:100%">
-                    <canvas id="chart"></canvas>
-                </div>
-                <div id="storyButtons" style="display:none"></div>
+                
             </div>
            <!--add project and map description here, including future use and other impact-->
->
         </div>
         <script src="js/globals.js"></script>
+        <script src="js/helpers.js"></script>
         <script src="js/createCharts.js"></script>
         <script src="js/init.js"></script>
 
