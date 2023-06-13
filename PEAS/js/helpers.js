@@ -17,13 +17,13 @@ function createCards(data){
     const newCard = document.createElement("div")
     newCard.className = "card"
     const cardTitle = document.createElement("h3")
-    cardTitle.innerHTML = "How Family Support Educational Attainment";
+    cardTitle.innerHTML = "How Family Support Affects Educational Attainment";
 
     const cardText = document.createElement("p")
     const question1 = document.createElement("h4")
     const question2 = document.createElement("h4")
-    question1.innerHTML = "Family support in college?<br>" + data.affectSuccess
-    question2.innerHTML = "Family support in applying?<br>" + data.affectApplication
+    question1.innerHTML = "<h4>Family support in college?<br></h4>" + data.affectSuccess
+    question2.innerHTML = "<h4>Family support in applying?<br></h4>" + data.affectApplication
 
     let formattedSurveyText = question1.innerHTML + "<br>" + question2.innerHTML
     cardText.innerHTML = formattedSurveyText
