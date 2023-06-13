@@ -39,11 +39,6 @@ function removeAllCards(){
     spaceForCards.innerHTML = `<button onclick="addChart()">Back to pie chart</button>`
 }
 
-function reOpenChartAfterClickingOutside(){
-
-}
-
-
 window.onclick = function(event) {
     console.log(event.target)
     const targetDivToClose = document.getElementsByClassName("spaceForCards")
