@@ -1,6 +1,7 @@
 
 function addChart(){
     cardSpace.style.display = "none";
+    removeAllCards()
     chartSpace.style.display = "block";
     // create the new chart here, target the id in the html called "chart"
     theChart = new Chart(document.getElementById("chart"), {

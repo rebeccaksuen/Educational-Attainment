@@ -82,8 +82,9 @@ function onlyShowClickedLayer(layers){ // 1. filter results on map
     addBaseMap()
     map.addLayer(layers);
     cardSpace.style.display = "block";
+    
     layers.eachLayer(function(layer){
-        // console.log(layer.options)
+        console.log(layer.options)
         createCards(layer.options)
         // createButton(layer.options.propeties)
     })

@@ -36,7 +36,7 @@ function createCards(data){
 
 function removeAllCards(){
     const spaceForCards = document.getElementById("spaceForCards")
-    spaceForCards.innerHTML = ""
+    spaceForCards.innerHTML = `<button onclick="addChart()">Back to pie chart</button>`
 }
 
 function reOpenChartAfterClickingOutside(){
