@@ -25,13 +25,16 @@ function createCards(data){
     question1.innerHTML = "<h4>Family support in college?<br></h4>" + data.affectSuccess
     question2.innerHTML = "<h4>Family support in applying?<br></h4>" + data.affectApplication
     
-    // card coloring
+    // card coloring from codewithrandom.com Pokemon Card Generator
     const themeColor = cardColors[data.supportReceived]
     console.log(themeColor)
-    //styleCard(themeColor)
-
-    //need help here
-    //let styleCard = color;
+    // styleCard(themeColor)  // need help here
+    // let styleCard = (color) => {
+    //     card.style.background='#ffffff' // ok something is needed here
+    //     card.forEach((cardColors) => {
+    //     cardColors.style.backgroundColor = color;
+    // });
+    // }
 
     let formattedSurveyText = question1.innerHTML + "<br>" + question2.innerHTML
     cardText.innerHTML = formattedSurveyText

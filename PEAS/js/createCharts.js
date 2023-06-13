@@ -53,10 +53,6 @@ function chartTrigger(target){
     // console.log(storyLayer)
     onlyShowClickedLayer(storyLayer)
     chartSpace.style.display = "none";
-    // event.target.remove("chart");
-    // event.target.remove("chart-title");
-    // document.getElementById("chart-title").innerHTML = "<h3>Survey Respondants</h3>";
-    // clickShowResponses(storyLayer);
     }
     
 //add another event to get back to chart
