@@ -1,7 +1,12 @@
-# Project: Educational Attainment for First Gen
+#Project Name:
+##Pilipinx Educational Attainment Survey (PEAS)
 
-# Table of Contents
-## 
+#Table of Contents
+* [Objective](http://127.0.0.1:5500/PEAS/index.html)
+* [Community]
+* [Technology Used]
+* [Repurposing]
+* [Screenshots]
 
 # Objective
 ## Our project aims to empower Pilipinx students whose parents did not attend college by amplifying their voices as they raise issues they face relating to educational attainment. We are looking at how family support affects first-generation Pilipinx college students. According to the Daily Bruin, there have been decreases in UCLA minority student retention, including first-generation students. Because of UCLA’s strong Pilipinx community, and community discontentment with UCLA’s support in addressing retention needs, we chose to focus on Pilipinx first-generation students in particular. Therefore, we wanted to create a website where Pilipinx first-generation students feel comfortable sharing their narratives on how the level of family support they received in higher education has impacted them. In this way, we hope to uplift the voices of the first-generation Pilipinx students in our UCLA community, and listen to how their status of being Pilipinx and first-generation have affected their experiences and ability to succeed in higher education. Working with SPEAR, Samahang Pilipino Education and Retention, a student-initiated and student-run project at UCLA’s Student Retention Center, we hope to make it easier for SPEAR to be able to better understand the needs and experiences of their first-generation students. We also hope that this project helps to identify locations where resources may benefit first-generation Pilipinx youth in encouraging and helping them apply to college.
