@@ -39,7 +39,7 @@ document.getElementById("chart").onclick = function (evt) {
 };
 
 //eventListener when click -> show buttons 
-document.getElementById("chart").addEventListener("click",showButtons) 
+document.getElementById("chart").addEventListener("click",clickShowResponses) 
     
 // similar to Tax Evaders changeCharts function
 function chartTrigger(target){
@@ -48,7 +48,8 @@ function chartTrigger(target){
     let storyLayer = layers[target]
     console.log(storyLayer)
     onlyShowClickedLayer(storyLayer)
-    // switchLayer(target,storyLayer)
-    // let storyButtons = document.getElementById("storyButtons");
-    // storyButtons.style.display = "block";
+    event.target.remove("chart");
+    clickShowResponses(storyButtons);
     }
+
+//add another event to get back to chart
