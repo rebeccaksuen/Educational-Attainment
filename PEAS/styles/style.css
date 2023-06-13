@@ -8,6 +8,7 @@ body{
     background-color: rgb(19, 27, 61);
     color:rgb(255, 255, 255);
     row-gap: 20px;
+    column-gap: 10px;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -33,11 +34,23 @@ header {
   }
   
   h1 {
+    font-size: 36px;
     background: linear-gradient(45deg, #FFD7D7, #FFE7A6, #CBE6FF, #FFFFFF);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   
+  h2{
+    font-size: 28px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h3{
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+  }
 #footer{
     grid-area: footer;
 }
@@ -48,7 +61,7 @@ header {
     grid-template-rows: 50px 1fr;
     grid-template-areas: "maptitle maptitle" "main_map content";
     display: grid;
-    gap: 7px;
+    gap: 12px;
 }
 #maptitle{
     grid-area: maptitle;
@@ -92,7 +105,7 @@ html, body, #container {
 	color: #adf;
 }
 .links > .line {
-	background: #68a;
+	background: rgb(34, 56, 79);
 	height: 1px;
 	pointer-events: none;
 }

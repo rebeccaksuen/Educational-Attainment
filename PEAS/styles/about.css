@@ -1,35 +1,36 @@
+/* font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
 body {
-    background-color: navy;
-    color: white;
+    background-color: rgb(19, 27, 61);
+    background: linear-gradient(45deg, #FFD7D7, #FFE7A6, #CBE6FF, #FFFFFF);
     font-family: Arial, sans-serif;
-}
-
-h1 {
-    color: rgb(145, 145, 238);
-}
-
-section#about-project h2 {
-    color: red;
-}
-
-section#about-us h2 {
-    color: yellow;
-}
-
-.team-images {
+  }
+  
+  
+  section#about-project h2 {
+    color: #ff5555;
+  }
+  
+  section#about-us h2 {
+    color: #030201;
+  }
+  
+  .team-images {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     margin-top: 50px;
-}
-
-.team-images img {
+  }
+  
+  .team-images img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-}
-
-.team-images div {
+  }
+  
+  .team-images div {
     text-align: center;
     margin-bottom: 50px;
-}
+  }
+  
