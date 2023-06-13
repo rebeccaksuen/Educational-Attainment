@@ -29,15 +29,14 @@ let circleOptions = {
     fillOpacity: 0.9
 }
 
-// Get the modal
 const cardSpace = document.getElementById("spaceForCards");
 const chartSpace = document.getElementById("chartSpace")
 
 let cardsOpen = false;
 const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQSn415MNwpNpFmQyxj2WbVnRJSDx85ki66G7zrcfeHpl8DSiErm9xD8psQxTwbPAzDLQeRMI8kF6eR/pub?output=csv"
 
-const colors = {
-yesSupport: '#0038a7',
-noSupport: '#ce1127',
-unsureSupport: '#fecb00'
+const cardColors = {
+"Yes": '#0038a7',
+"No": '#ce1127',
+"I am unsure.": '#fecb00'
 }

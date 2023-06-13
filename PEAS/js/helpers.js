@@ -24,6 +24,14 @@ function createCards(data){
     const question2 = document.createElement("h4")
     question1.innerHTML = "<h4>Family support in college?<br></h4>" + data.affectSuccess
     question2.innerHTML = "<h4>Family support in applying?<br></h4>" + data.affectApplication
+    
+    // card coloring
+    const themeColor = cardColors[data.supportReceived]
+    console.log(themeColor)
+    //styleCard(themeColor)
+
+    //need help here
+    //let styleCard = color;
 
     let formattedSurveyText = question1.innerHTML + "<br>" + question2.innerHTML
     cardText.innerHTML = formattedSurveyText
